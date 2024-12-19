@@ -1,0 +1,28 @@
+#######################
+### Oncall-api settings
+#######################
+server:
+  host: 0.0.0.0
+  port: 8080
+oncall_host: http://localhost:8080
+metrics: prometheus
+db:
+  conn:
+    kwargs:
+      scheme: mysql+pymysql
+      user: root
+      password: "1234"
+      host: 127.0.0.1
+      port: 3306
+      database: oncall
+      charset: utf8
+      echo: True
+    str: "%(scheme)s://%(user)s:%(password)s@%(host)s:%(port)s/%(database)s?charset=%(charset)s"
+  kwargs:
+    pool_recycle: 3600
+healthcheck_path: /tmp/status
+prometheus:
+  oncall-notifier:
+    server_port: 8000
+
+........
