@@ -1,0 +1,31 @@
+groups:
+- name: dummy_alert
+  rules:
+  - alert: DummyAlertDeployment
+    expr: kube_deployment_status_replicas_available != 0
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "More than 0 replicas are available. Dummy alert"
+      description: "Dummy alert"
+- name: cpu_seconds_alert
+  rules:
+  - alert: CpuSecondsAlert
+    expr: process_cpu_seconds_total > 10
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Too many cpu seconds"
+      description: "warning alert"
+- name: real_deployment_alert
+  rules:
+  - alert: DeploymentReplicasUnavailable
+    expr: kube_deployment_status_replicas_unavailable != 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "More than 0 replicas are unavailable."
+      description: "Crit!!!"
