@@ -1,4 +1,4 @@
-# HW 5. Elasticsearch & Kibana
+# HW 5. Prometheus
 
 ## Фотоотчет
 
