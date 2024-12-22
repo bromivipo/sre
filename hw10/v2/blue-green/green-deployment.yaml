@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-version-checker
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: green-version-checker
+  template:
+    metadata:
+      labels:
+        app: green-version-checker
+    spec:
+      containers:
+      - name: version-checker
+        image: me/version-checker:2.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
